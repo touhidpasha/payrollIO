@@ -108,6 +108,7 @@ public class Payroll {
 	}
 	
 	public void readDataFromFile() {
+		int count=-1;
 		 try
 	        {
 	            Path path=Paths.get("/home/touhidpasha/eclipse-workspace/payrollIO/emplyeedetails/data.txt");
@@ -115,6 +116,7 @@ public class Payroll {
 	          
 	           for(String line:data)
 	           {
+	        	   count++;
 	               System.out.println(line);
 	           }
 	        }
@@ -122,6 +124,7 @@ public class Payroll {
 	        {
 	            e.printStackTrace();
 	        }
+		 System.out.println("number of entries are "+count);//printing number of entries
 	}
 
 	public static void main(String args[]) {
