@@ -1,6 +1,9 @@
 package payrollIO;
 
+import java.awt.List;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.*;
 import java.nio.file.*;
@@ -33,11 +36,18 @@ public class Payroll {
         {
             //Writing with Bytes
 
+//
+//            Path path=Paths.get("/home/touhidpasha/eclipse-workspace/payrollIO/emplyeedetails/data.txt");
+//            String content="emp id "+id+" emp name "+name+" and salary "+salary+"\n";
+//            Files.write(path, content.getBytes());
 
-            Path path=Paths.get("/home/touhidpasha/eclipse-workspace/payrollIO/emplyeedetails/data.txt");
-            String content="emp id "+id+" emp name"+name+" and salary "+salary;
-            Files.write(path, content.getBytes());
+			FileWriter fw = new FileWriter("/home/touhidpasha/eclipse-workspace/payrollIO/emplyeedetails/data.txt", true);
+		    BufferedWriter bw = new BufferedWriter(fw);
+            String content="emp id "+id+" emp name "+name+" and salary "+salary+"\n";
 
+		    bw.write(content);
+		    bw.newLine();
+		    bw.close();
 
              //Writing with List of String
 
@@ -96,12 +106,32 @@ public class Payroll {
 		}
 
 	}
+	
+	public void readDataFromFile() {
+		 try
+	        {
+	            Path path=Paths.get("/home/touhidpasha/eclipse-workspace/payrollIO/emplyeedetails/data.txt");
+	           java.util.List<String> data= Files.readAllLines(path);
+	          
+	           for(String line:data)
+	           {
+	               System.out.println(line);
+	           }
+	        }
+	        catch(Exception e)
+	        {
+	            e.printStackTrace();
+	        }
+	}
 
 	public static void main(String args[]) {
 		Payroll obj = new Payroll();
-		 obj.readInfo();
-		// obj.writeInfoToConsole();
-		//obj.fileOperations();
-		 obj.writeDataToFile();
+//		 obj.readInfo();
+//		// obj.writeInfoToConsole();
+//		//obj.fileOperations();
+//		 obj.writeDataToFile();
+//		 obj.readInfo();
+//		 obj.writeDataToFile();
+		obj.readDataFromFile();
 	}
 }

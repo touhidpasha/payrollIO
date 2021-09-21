@@ -1,1 +1,3 @@
-emp id a123 emp nametouhid and salary 1234
+emp id d123 emp name shit and salary 432
+emp id r1234 emp name xyz and salary 9
+
